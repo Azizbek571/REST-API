@@ -1,3 +1,5 @@
+import 'package:rest_api_flutter/Models/user_dob.dart';
+import 'package:rest_api_flutter/Models/user_location.dart';
 import 'package:rest_api_flutter/Models/user_name.dart';
 
 class User {
@@ -7,6 +9,8 @@ class User {
   final String cell;
   final String nat;
   final UserName name;
+  final UserDob dob;
+  final UserLocation location;
   User({
     required this.gender,
     required this.email,
@@ -14,6 +18,8 @@ class User {
     required this.cell,
     required this.nat,
     required this.name,
+    required this.dob,
+    required this.location,
   });
 
   String get fullName{
