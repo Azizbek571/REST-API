@@ -14,6 +14,24 @@ class UserLocation {
       required this.street,
       required this.coordinates,
       required this.timezone});
+
+
+      factory UserLocation.fromMap(Map<String, dynamic> json){
+          final coordinates = LocationCoordinate.fromMap(json['coordinates']);
+
+      final street = LocationStreet.fromMap(json['street']);
+
+      final timezone = LocationTimezone.fromMap(json['timezone']);
+
+      return UserLocation(
+          city: json['city'],
+          country: json['country'],
+          postcode: json['postcode'].toString(),
+          state: json['state'],
+          street: street,
+          coordinates: coordinates,
+          timezone: timezone);
+      }
 }
 
 class LocationStreet {
@@ -23,6 +41,13 @@ class LocationStreet {
     required this.name,
     required this.number,
   });
+   factory LocationStreet.fromMap(Map<String, dynamic> json){
+       return LocationStreet(
+        name: json['name'],
+        number: json['number'],
+      );
+   }
+
 }
 
 class LocationCoordinate {
@@ -32,6 +57,11 @@ class LocationCoordinate {
     required this.latitude,
     required this.longtude,
   });
+   factory LocationCoordinate.fromMap(Map<String, dynamic> json){
+    return  LocationCoordinate(
+          latitude: json['latitude'],
+          longtude: json['longtude']);
+   }
 }
 
 class LocationTimezone {
@@ -41,4 +71,9 @@ class LocationTimezone {
     required this.description,
     required this.offset,
   });
+   factory LocationTimezone.fromMap(Map<String, dynamic> json){
+    return LocationTimezone(
+          description: json['description'],
+          offset: json['offset']);
+   }
 }
